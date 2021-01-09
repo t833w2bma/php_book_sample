@@ -1,6 +1,6 @@
+<!-- コピペ -->
 <?php session_start(); ?>
-<?php require '../header.php'; ?>
-<?php require 'menu.php'; ?>
+<?php require 'header3.php'; ?>
 <?php
 if (!isset($_SESSION['customer'])) {
 	echo '購入手続きを行うにはログインしてください。';

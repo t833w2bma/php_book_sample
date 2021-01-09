@@ -1,7 +1,6 @@
-<?php session_start(); ?>
-<?php require '../header.php'; ?>
-<?php require 'menu.php'; ?>
-<?php
+<?php session_start(); ?> 
+<?php require 'header3.php'; ?>
+<?php 
 require 'favorite.php';
 ?>
 <?php require '../footer.php'; ?>

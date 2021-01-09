@@ -1,11 +1,9 @@
+<!-- コピペ -->
 <?php session_start(); ?>
-<?php require '../header.php'; ?>
-<?php require 'menu.php'; ?>
+<?php require 'header3.php'; ?>
 <?php
-$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-	'staff', 'password');
 $purchase_id=1;
-foreach ($pdo->query('select max(id) from purchase') as $row) {
+foreach ($pdo->query('select max(id) from purchase') as $row) {  
 	$purchase_id=$row['max(id)']+1;
 }
 $sql=$pdo->prepare('insert into purchase values(?,?)');

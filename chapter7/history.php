@@ -1,21 +1,21 @@
+<!-- コピペ -->
 <?php session_start(); ?>
-<?php require '../header.php'; ?>
-<?php require 'menu.php'; ?>
+<?php require 'header3.php'; ?> 
+
 <?php
 if (isset($_SESSION['customer'])) {
-	$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-		'staff', 'password');
 	$sql_purchase=$pdo->prepare(
 		'select * from purchase where customer_id=? order by id desc');
 	$sql_purchase->execute([$_SESSION['customer']['id']]);
-	foreach ($sql_purchase as $row_purchase) {
+	
+		foreach ($sql_purchase as $row_purchase) {
 		$sql_detail=$pdo->prepare(
-			'select * from purchase_detail,product '.
-			'where purchase_id=? and product_id=id');
+			'select * from purchase_detail,product where purchase_id=? and product_id=id');
 		$sql_detail->execute([$row_purchase['id']]);
-		echo '<table>';
+		echo '<table>';					
+		//foreach前にすると履歴なくても表示されるがforeachの中じゃないと繰り返されない。
 		echo '<tr><th>商品番号</th><th>商品名</th>', 
-			'<th>価格</th><th>個数</th><th>小計</th></tr>';
+				'<th>価格</th><th>個数</th><th>小計</th></tr>';
 		$total=0;
 		foreach ($sql_detail as $row_detail) {
 			echo '<tr>';
